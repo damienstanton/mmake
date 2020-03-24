@@ -1,6 +1,6 @@
-module github.com/tj/mmake
+module github.com/damienstanton/mmake
 
-go 1.13
+go 1.14
 
 require (
 	github.com/apex/log v1.1.1

@@ -13,9 +13,7 @@ import (
 	log "github.com/apex/log"
 	"github.com/apex/log/handlers/cli"
 
-	"github.com/tj/mmake/help"
-	"github.com/tj/mmake/installer"
-	"github.com/tj/mmake/resolver"
+	"github.com/damienstanton/mmake/help"
 )
 
 var makefileVariants = [3]string{"GNUmakefile", "makefile", "Makefile"}
@@ -43,18 +41,6 @@ func main() {
 	b, err := ioutil.ReadFile(f)
 	if err != nil {
 		log.WithError(err).Fatal("reading makefile")
-	}
-
-	// ensure deps are installed
-	i := installer.New(installer.Config{
-		Resolver:    resolver.NewUniversalResolver(),
-		Destination: resolver.GetIncludePath(os.Args[1:]),
-		Log:         log.Log,
-		ForceUpdate: cmd == "update",
-	})
-
-	if err := i.Parse(bytes.NewReader(b)); err != nil {
-		log.WithError(err).Fatal("installing")
 	}
 
 	switch cmd {

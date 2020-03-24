@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/tj/mmake/parser"
+	"github.com/damienstanton/mmake/parser"
 )
 
 func ExampleParser_Parse_withComments() {
